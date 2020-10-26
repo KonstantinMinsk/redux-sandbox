@@ -4,13 +4,33 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" 
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>React SandBox</title>
+    <style>
+      .jumbotron {
+          margin: 100px auto;
+          width: 600px;
+          justify-content: space-evenly;
+        };
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-
-    -->
+    <div id="root" class="d-flex d-flex-row jumbotron">
+      <button id="r-dec" class="btn btn-primary">
+        random DEC
+      </button>
+      <button id="dec" class="btn btn-primary btn-lg">
+          DEC
+      </button>
+      <h2 class="counter"> 0 </h2>
+      <button id="inc" class="btn btn-primary btn-lg">
+          INC
+      </button>
+      <button id="r-inc" class="btn btn-primary">
+          random INC
+      </button>
+    </div>
   </body>
 </html>

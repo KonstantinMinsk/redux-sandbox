@@ -7,6 +7,12 @@ const reducer = (state = 0, action) => {
   switch (action.type) {
     case 'INC':
       return state + 1;
+    case 'R-INC':
+      return state + 10;
+    case 'DEC':
+      return state - 1;
+    case 'R-DEC':
+      return state - 10;
     default:
       return state;  
     // if action.type - undefined, you need return state unchanged 
@@ -15,16 +21,13 @@ const reducer = (state = 0, action) => {
 
 const store = createStore(reducer);
 
-// get state or initialState
-console.log('getState():', store.getState());
+document.querySelector('#inc').addEventListener('click', () => store.dispatch({ type: 'INC' }));
+document.querySelector('#r-inc').addEventListener('click', () => store.dispatch({ type: 'R-INC' }));
+document.querySelector('#dec').addEventListener('click', () => store.dispatch({ type: 'DEC' }));
+document.querySelector('#r-dec').addEventListener('click', () => store.dispatch({ type: 'R-DEC' }));
 
-// receive notifications of changes
-store.subscribe(() => console.log(store.getState()));
-
-// handle new action
-store.dispatch( {type: 'INC'} );
-store.dispatch( {type: 'INC'} );
-store.dispatch( {type: 'INC'} );
-store.dispatch( {type: 'INC'} );
-store.dispatch( {type: 'INC'} );
+const update = () => {
+  document.querySelector('.counter').innerHTML = store.getState();
+};
+store.subscribe(update);
 
