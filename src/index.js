@@ -19,23 +19,32 @@ const reducer = (state = 0, action) => {
   }
 }
 
+const inc = () => ({ type: 'INC' });
+const dec = () => ({ type: 'DEC' });
+const rInc = (payload) => ({ type: 'R-INC', payload });
+const rDec = (payload) => ({ type: 'R-DEC', payload });
+
+
+
 const store = createStore(reducer);
 
-document.querySelector('#inc').addEventListener('click', () => store.dispatch({ type: 'INC' }));
-document.querySelector('#dec').addEventListener('click', () => store.dispatch({ type: 'DEC' }));
+document.querySelector('#inc').addEventListener('click', () => store.dispatch(inc()));
+document.querySelector('#dec').addEventListener('click', () => store.dispatch(dec()));
+
+const payload = Math.floor(Math.random()*10+1);
 document.querySelector('#r-inc')
-  .addEventListener('click', () => store.dispatch({ 
-    type: 'R-INC',
-    payload: Math.floor(Math.random()*10+1)
-   }));
+  .addEventListener('click', () => {
+    store.dispatch(rInc(payload));
+  });
+
 document.querySelector('#r-dec')
-  .addEventListener('click', () => store.dispatch({ 
-    type: 'R-DEC',
-    payload: Math.floor(Math.random()*10+1) 
-  }));
+  .addEventListener('click', () => {
+    store.dispatch(rDec(payload));
+  });
 
 const update = () => {
   document.querySelector('.counter').innerHTML = store.getState();
 };
+
 store.subscribe(update);
 

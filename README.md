@@ -22,3 +22,11 @@ store.dispatch({
     } 
   })
 ```
+
+### Create functions ActionCreator
+```
+const userLoggedIn = (name, role) => {
+    return { type: 'USER_LOGGED_IN', name, role };
+}
+store.dispatch(userLoggedIn(name, role));
+```
