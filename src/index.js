@@ -1,3 +1,5 @@
+import { createStore } from "redux";
+
 // reducer = (state, action) => newState;
 const reducer = (state = 0, action) => {
 
@@ -11,9 +13,18 @@ const reducer = (state = 0, action) => {
   }
 }
 
-let counter = reducer(undefined, { });
-console.log(counter);
-counter = reducer(counter, { type: 'INC'});
-console.log(counter);
-counter = reducer(counter, { type: 'INC'});
-console.log(counter);
+const store = createStore(reducer);
+
+// get state or initialState
+console.log('getState():', store.getState());
+
+// receive notifications of changes
+store.subscribe(() => console.log(store.getState()));
+
+// handle new action
+store.dispatch( {type: 'INC'} );
+store.dispatch( {type: 'INC'} );
+store.dispatch( {type: 'INC'} );
+store.dispatch( {type: 'INC'} );
+store.dispatch( {type: 'INC'} );
+
