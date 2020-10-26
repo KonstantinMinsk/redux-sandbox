@@ -12,3 +12,13 @@
 1. store.dispatch() used to update state
 2. store.subscribe() used to update UI elem (counter) 
 
+### Any action can contain additional information
+```
+store.dispatch({ 
+    type: 'R-DEC',
+    payload: {
+        name: 'Kostya',
+        role: 'admin'
+    } 
+  })
+```
