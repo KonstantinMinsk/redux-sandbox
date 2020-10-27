@@ -1,7 +1,12 @@
 import React from "react";
+
 import { connect } from "react-redux";
-import "./counter.css";
-import { inc, dec, rInc, rDec } from '../../actions';
+
+import { bindActionCreators } from "redux";
+
+import * as actions from './actions'
+
+import './counter.css'
 
 const Counter = ({ counter, inc, dec, rInc, rDec }) => {
     return (
@@ -30,16 +35,22 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+    
+    // const bindActionCreator = (creator, dispatch) => (...arg) => {
+    //     dispatch(creator(...arg));
+    // }
+    const { inc, dec, rInc, rDec } = bindActionCreators(actions, dispatch);
+
     return {
-        inc: () => dispatch(inc()),
-        dec: () => dispatch(dec()),
+        inc,
+        dec,
         rInc: () => {
             const value = Math.floor(Math.random()*10+1);
-            dispatch(rInc(value));
+            rInc(value);
         },
         rDec: () =>  {
             const value = Math.floor(Math.random()*10+1);
-            dispatch(rDec(value));
+            rDec(value);
         },
     }
 }

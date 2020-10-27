@@ -45,7 +45,7 @@ const { add, remove } = bindActionCreators(actions, dispatch)
 bindActionCreators() - *создает действие action и отправляет его в fn reducer с помощью fn dispatch 
 
 
-### Using Provider & connect from react-redux
+### Add Provider & connect from react-redux
 ```
 <Provider store={store}>
     <App />
@@ -64,4 +64,10 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 ```
 
-
+### Add bindActionCreators
+```
+const mapDispatchToProps = (dispatch) => {
+    const { inc, dec } = bindActionCreators(actions, dispatch);
+    return { inc, dec, }
+}
+```
