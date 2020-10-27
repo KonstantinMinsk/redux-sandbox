@@ -43,3 +43,25 @@ const bindActionCreator = (creator, dispatch) => (...arg) => {
 const { add, remove } = bindActionCreators(actions, dispatch)
 ```
 bindActionCreators() - *создает действие action и отправляет его в fn reducer с помощью fn dispatch 
+
+
+### Using Provider & connect from react-redux
+```
+<Provider store={store}>
+    <App />
+</Provider>
+```
+connect - HOC, passes values ​​from store to component & passes fn action in dispatch
+```
+const mapStateToProps = (state) => {
+    return { counter: state.counter, name: state.name }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return { inc: () => dispatch(inc()), dec: () => dispatch(dec()) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+```
+
+
