@@ -30,3 +30,5 @@ const userLoggedIn = (name, role) => {
 }
 store.dispatch(userLoggedIn(name, role));
 ```
+
+### Take out funcs reducer & ActionCreator in separate file
