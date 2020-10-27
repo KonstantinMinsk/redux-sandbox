@@ -71,3 +71,6 @@ const mapDispatchToProps = (dispatch) => {
     return { inc, dec, }
 }
 ```
+
+### Refactor 
+Transfer payload from mapDispatchToProps in fn actions
