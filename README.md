@@ -31,4 +31,15 @@ const userLoggedIn = (name, role) => {
 store.dispatch(userLoggedIn(name, role));
 ```
 
-### Take out funcs reducer & ActionCreator in separate file
+### Take out funcs reducer & ActionCreator in separate file reducer.js & actions.js
+1. Create own fn bindActionCreator
+```
+const bindActionCreator = (creator, dispatch) => (...arg) => {
+    dispatch(creator(...arg));
+}
+```
+2. bindActionCreators() связывает funcs reducer & ActionCreator 
+```
+const { add, remove } = bindActionCreators(actions, dispatch)
+```
+bindActionCreators() - *создает действие action и отправляет его в fn reducer с помощью fn dispatch 
